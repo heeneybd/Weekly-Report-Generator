@@ -1,2 +1,2 @@
 # Report-Generator
-This program generates weekly comments for each students based on their performance.
+This program generates weekly comments for each student in a class based on their performance.
