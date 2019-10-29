@@ -28,47 +28,60 @@ speaking2 = [" is able to speak fairly well.", "'s speaking continues to show st
 speaking3 = ["'s speaking needs improvement.", " still needs more practice speaking.", " needs more practice speaking loudly and clearly."]
 
 listening1 = [" has excellent listening skills and is able to clearly understand spoken English.", "'s listening skill is quite good.", " has excellent listening comprehension."]
-listening2 = ["'s listening skills continue to show improvement.", " listening skills are at the appropriate level.", " has no problem understanding spoken English."]
+listening2 = ["'s listening skills continue to show improvement.", "'s listening skills are at the appropriate level.", " has no problem understanding spoken English."]
 listening3 = ["'s listening skills need improvement.", " needs more practice with listening.", " has difficulty understand spoken English but we are still working on improving this skill."]
 
 print("Rabbit Class:")
-print(df)
+print('')
 
 student_list = df1['Student Name'].tolist()
-print(student_list)
+student_pronounlist = df1['Pronoun'].tolist()
 
 i = 0
 for i in df.index:
     student_number = df["Student Number"][i]
-    print(student_number)
+
     student_name = student_list[int(student_number) - 1]
+    
+    student_pronoun = student_pronounlist[int(student_number) - 1]
+    
     
     behavior = df["Behavior"][i]
     if behavior == 1:
-        behaviorstring = "%s" + random.choice(behavior1)
+        behaviorstring = random.choice(behavior1)
     elif behavior == 2:
-        behaviorstring = "%s" + random.choice(behavior2)
+        behaviorstring = random.choice(behavior2)
     else:
-        behaviorstring = "%s" + random.choice(behavior3)
+        behaviorstring = random.choice(behavior3)
     
     speaking = df["Speaking"][i]
     if speaking == 1:
-        speakingstring = "%s" + random.choice(speaking1)
+        speakingstring = random.choice(speaking1)
     elif speaking == 2:
-        speakingstring = "%s" + random.choice(speaking2)
+        speakingstring = random.choice(speaking2)
     else:
-        speakingstring = "%s" + random.choice(speaking3)
+        speakingstring = random.choice(speaking3)
     
     listening = df["Listening"][i]
     if listening == 1:
-        listeningstring = "%s" + random.choice(listening1)
+        listeningstring = random.choice(listening1)
     elif listening == 2:
-        listeningstring = "%s" + random.choice(listening2)
+        listeningstring = random.choice(listening2)
     else:
-        listeningstring = "%s" + random.choice(listening3)
+        listeningstring = random.choice(listening3)
     
-    paragraph = [listeningstring % student_name, speakingstring % student_name, behaviorstring % student_name]
+    paragraph = [listeningstring, speakingstring, behaviorstring]
 
     random.shuffle(paragraph)
     
-    print((' '.join(paragraph)))
+    paragraph[0] = student_name + paragraph[0]
+    paragraph[1] = student_pronoun + paragraph[1]
+    paragraph[2] = student_pronoun + paragraph[2]
+    
+    paragraph = ' '.join(paragraph) 
+    
+    paragraph = paragraph.replace("She's", "Her")
+    paragraph = paragraph.replace("He's", "His")
+    
+    print(paragraph)
+    print('')
