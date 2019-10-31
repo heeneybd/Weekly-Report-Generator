@@ -9,7 +9,7 @@ import os
 import pandas as pd
 import random
 import xlsxwriter
-import datetime
+from datetime import date
 import calendar 
 
 ##This is the path to the excel file with raw data
@@ -79,7 +79,7 @@ for i in df.index:
     paragraph = [listeningstring, speakingstring, behaviorstring]
     random.shuffle(paragraph)
     
-    if paragraph[1] in postive:
+    if paragraph[1] in positive:
         if paragraph[2] in positive:
             paragraph[1] = paragraph[1][:-1] + " and"
             
