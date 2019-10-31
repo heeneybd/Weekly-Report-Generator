@@ -11,8 +11,6 @@ import random
 import xlsxwriter
 import datetime
 import calendar 
-from pandas import ExcelWriter
-from pandas import ExcelFile
 
 ##This is the path to the excel file with raw data
 path = r"C:\Users\braden.h\Desktop\rabbit_class.xlsx"
